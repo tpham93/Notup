@@ -1,0 +1,296 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="12.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{16DF5B41-AAF8-4209-9365-1A92F7BFFE36}</ProjectGuid>
+    <RootNamespace>game</RootNamespace>
+    <ProjectName>slimGL</ProjectName>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v120</PlatformToolset>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v120</PlatformToolset>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v120</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v120</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <IncludePath>$(ProjectDir)include;$(ProjectDir)..\..\lib\freeglut\include;$(ProjectDir)..\..\lib\glew\include;$(ProjectDir)..\..\lib\DevIL\include;$(ProjectDir)..\..\lib\glm;$(ProjectDir)..\..\lib\ft253\freetype-2.5.3\include;$(ProjectDir)..\..\lib\assimp\include;$(IncludePath)</IncludePath>
+    <LibraryPath>$(ProjectDir)..\..\lib\freeglut\lib\x64;$(ProjectDir)..\..\lib\glew\lib\Release\x64;$(ProjectDir)..\..\lib\DevIL\lib;$(ProjectDir)..\..\lib\ft253\freetype-2.5.3\builds\windows\vc2010\x64;$(ProjectDir)..\..\lib\assimp\lib64;$(LibraryPath)</LibraryPath>
+    <SourcePath>$(ProjectDir)src;$(SourcePath)</SourcePath>
+    <OutDir>$(SolutionDir)$(ProjectName)\$(Platform)\$(Configuration)\</OutDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <IncludePath>$(ProjectDir)include;$(ProjectDir)..\..\lib\freeglut\include;$(ProjectDir)..\..\lib\glew\include;$(ProjectDir)..\..\lib\DevIL\include;$(ProjectDir)..\..\lib\glm;$(ProjectDir)..\..\lib\ft253\freetype-2.5.3\include;$(ProjectDir)..\..\lib\assimp\include;$(IncludePath)</IncludePath>
+    <LibraryPath>$(ProjectDir)..\..\lib\freeglut\lib\x64;$(ProjectDir)..\..\lib\glew\lib\Release\x64;$(ProjectDir)..\..\lib\DevIL\lib;$(ProjectDir)..\..\lib\ft253\freetype-2.5.3\builds\windows\vc2010\x64;$(ProjectDir)..\..\lib\assimp\lib64;$(LibraryPath)</LibraryPath>
+    <SourcePath>$(ProjectDir)src;$(SourcePath)</SourcePath>
+    <OutDir>$(SolutionDir)$(ProjectName)\$(Platform)\$(Configuration)\</OutDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <IncludePath>$(ProjectDir)include;$(ProjectDir)..\..\lib\freeglut\include;$(ProjectDir)..\..\lib\glew\include;$(ProjectDir)..\..\lib\DevIL\include;$(ProjectDir)..\..\lib\glm;$(ProjectDir)..\..\lib\ft253\freetype-2.5.3\include;$(ProjectDir)..\..\lib\assimp\include;$(IncludePath)</IncludePath>
+    <LibraryPath>$(ProjectDir)..\..\lib\freeglut\lib\x64;$(ProjectDir)..\..\lib\glew\lib\Release\x64;$(ProjectDir)..\..\lib\DevIL\lib;$(ProjectDir)..\..\lib\ft253\freetype-2.5.3\builds\windows\vc2010\x64;$(ProjectDir)..\..\lib\assimp\lib64;$(LibraryPath)</LibraryPath>
+    <SourcePath>$(ProjectDir)src;$(SourcePath)</SourcePath>
+    <OutDir>$(SolutionDir)$(ProjectName)\$(Platform)\$(Configuration)\</OutDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <IncludePath>$(ProjectDir)include;$(ProjectDir)..\..\lib\freeglut\include;$(ProjectDir)..\..\lib\glew\include;$(ProjectDir)..\..\lib\DevIL\include;$(ProjectDir)..\..\lib\glm;$(ProjectDir)..\..\lib\ft253\freetype-2.5.3\include;$(ProjectDir)..\..\lib\assimp\include;$(IncludePath)</IncludePath>
+    <LibraryPath>$(ProjectDir)..\..\lib\freeglut\lib\x64;$(ProjectDir)..\..\lib\glew\lib\Release\x64;$(ProjectDir)..\..\lib\DevIL\lib;$(ProjectDir)..\..\lib\ft253\freetype-2.5.3\builds\windows\vc2010\x64;$(ProjectDir)..\..\lib\assimp\lib64;$(LibraryPath)</LibraryPath>
+    <SourcePath>$(ProjectDir)src;$(SourcePath)</SourcePath>
+    <OutDir>$(SolutionDir)$(ProjectName)\$(Platform)\$(Configuration)\</OutDir>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Custom</Optimization>
+      <SDLCheck>true</SDLCheck>
+    </ClCompile>
+    <Link>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalDependencies>freeglut.lib;glew32.lib;glew32s.lib;DevIL.lib;ILU.lib;ILUT.lib;freetype253.lib;assimp.lib</AdditionalDependencies>
+    </Link>
+    <PreBuildEvent>
+      <Command>
+      </Command>
+    </PreBuildEvent>
+    <PostBuildEvent>
+      <Command>
+      </Command>
+    </PostBuildEvent>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Custom</Optimization>
+      <SDLCheck>true</SDLCheck>
+    </ClCompile>
+    <Link>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalDependencies>freeglut.lib;glew32.lib;glew32s.lib;DevIL.lib;ILU.lib;ILUT.lib;freetype253.lib;assimp.lib</AdditionalDependencies>
+    </Link>
+    <PreBuildEvent>
+      <Command>
+      </Command>
+    </PreBuildEvent>
+    <PostBuildEvent>
+      <Command>
+      </Command>
+    </PostBuildEvent>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+    </ClCompile>
+    <Link>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <AdditionalDependencies>freeglut.lib;glew32.lib;glew32s.lib;DevIL.lib;ILU.lib;ILUT.lib;freetype253.lib;assimp.lib</AdditionalDependencies>
+    </Link>
+    <PreBuildEvent>
+      <Command>
+      </Command>
+    </PreBuildEvent>
+    <PostBuildEvent>
+      <Command>
+      </Command>
+    </PostBuildEvent>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ClCompile>
+    <Link>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <AdditionalDependencies>freeglut.lib;glew32.lib;glew32s.lib;DevIL.lib;ILU.lib;ILUT.lib;freetype253.lib;assimp.lib</AdditionalDependencies>
+    </Link>
+    <PreBuildEvent>
+      <Command>
+      </Command>
+    </PreBuildEvent>
+    <PostBuildEvent>
+      <Command>
+      </Command>
+    </PostBuildEvent>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClCompile Include="src\Framework\Collision\CircleShape.cpp" />
+    <ClCompile Include="src\Framework\Collision\CollisionInfo.cpp" />
+    <ClCompile Include="src\Framework\Collision\ConvexPolygonShape.cpp" />
+    <ClCompile Include="src\Framework\Collision\Range.cpp" />
+    <ClCompile Include="src\Framework\Collision\Shape.cpp" />
+    <ClCompile Include="src\Framework\Helper\Box.cpp" />
+    <ClCompile Include="src\Framework\Helper\MeshConstructor.cpp" />
+    <ClCompile Include="src\Framework\Helper\VecHelper.cpp" />
+    <ClCompile Include="src\Framework\Input\MouseButton.cpp" />
+    <ClCompile Include="src\Framework\Helper\ModelLoader.cpp" />
+    <ClCompile Include="src\Framework\Shader\GeometryBuffer.cpp" />
+    <ClCompile Include="src\Framework\Drawable\Drawable.cpp" />
+    <ClCompile Include="src\Framework\Drawable\Sprite.cpp" />
+    <ClCompile Include="src\Framework\Drawable\Text.cpp" />
+    <ClCompile Include="src\Framework\Drawable\TextureAtlas.cpp" />
+    <ClCompile Include="src\Framework\Resources\Font.cpp" />
+    <ClCompile Include="src\Framework\Game\Game.cpp" />
+    <ClCompile Include="src\Framework\Game\GameTime.cpp" />
+    <ClCompile Include="src\Framework\Helper\Helper.cpp" />
+    <ClCompile Include="src\Framework\Input\Input.cpp" />
+    <ClCompile Include="src\Framework\UniformStruct\LightSource\PointLight.cpp" />
+    <ClCompile Include="src\Framework\UniformStruct\Material\BasicLightingMaterial.cpp" />
+    <ClCompile Include="src\Framework\UniformStruct\Material\Material.cpp" />
+    <ClCompile Include="src\Framework\UniformStruct\Material\TextureMaterial.cpp" />
+    <ClCompile Include="src\Framework\Helper\Rect.cpp" />
+    <ClCompile Include="src\Framework\Shader\MatrixHandler.cpp" />
+    <ClCompile Include="src\Framework\Shader\ShaderAttributes.cpp" />
+    <ClCompile Include="src\Framework\Shader\ShaderProgram.cpp" />
+    <ClCompile Include="src\Framework\Shader\Shader.cpp" />
+    <ClCompile Include="src\Framework\Resources\Texture.cpp" />
+    <ClCompile Include="src\Framework\UniformStruct\UniformStruct.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="files\Models\mar_rifle.uc">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</ExcludedFromBuild>
+      <DeploymentContent Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</DeploymentContent>
+      <DeploymentContent Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</DeploymentContent>
+      <FileType>Document</FileType>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">false</ExcludedFromBuild>
+      <DeploymentContent Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</DeploymentContent>
+      <DeploymentContent Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</DeploymentContent>
+    </Text>
+    <Text Include="files\Models\mar_rifle_a.3d">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</ExcludedFromBuild>
+      <DeploymentContent Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</DeploymentContent>
+      <DeploymentContent Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</DeploymentContent>
+      <FileType>Document</FileType>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">false</ExcludedFromBuild>
+      <DeploymentContent Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</DeploymentContent>
+      <DeploymentContent Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</DeploymentContent>
+    </Text>
+    <Text Include="files\Models\mar_rifle_d.3d">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</ExcludedFromBuild>
+      <DeploymentContent Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</DeploymentContent>
+      <DeploymentContent Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</DeploymentContent>
+      <FileType>Document</FileType>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">false</ExcludedFromBuild>
+      <DeploymentContent Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</DeploymentContent>
+      <DeploymentContent Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</DeploymentContent>
+    </Text>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="include\Framework\Collision\CircleShape.h" />
+    <ClInclude Include="include\Framework\Collision\CollisionInfo.h" />
+    <ClInclude Include="include\Framework\Collision\ConvexPolygonShape.h" />
+    <ClInclude Include="include\Framework\Collision\Range.h" />
+    <ClInclude Include="include\Framework\Collision\Shape.h" />
+    <ClInclude Include="include\Framework\Collision\ShapeType.h" />
+    <ClInclude Include="include\Framework\Drawable\BufferData.h" />
+    <ClInclude Include="include\Framework\Drawable\Drawable.h" />
+    <ClInclude Include="include\Framework\Drawable\MeshData.h" />
+    <ClInclude Include="include\Framework\Drawable\Sprite.h" />
+    <ClInclude Include="include\Framework\Drawable\Text.h" />
+    <ClInclude Include="include\Framework\Drawable\TextureAtlas.h" />
+    <ClInclude Include="include\Framework\Game\Game.h" />
+    <ClInclude Include="include\Framework\Game\GameTime.h" />
+    <ClInclude Include="include\Framework\Helper\Box.h" />
+    <ClInclude Include="include\Framework\Helper\MeshConstructor.h" />
+    <ClInclude Include="include\Framework\Helper\VecHelper.h" />
+    <ClInclude Include="include\Framework\Input\Input.h" />
+    <ClInclude Include="include\Framework\Input\MouseButton.h" />
+    <ClInclude Include="include\Framework\Helper\Helper.h" />
+    <ClInclude Include="include\Framework\Helper\ModelLoader.h" />
+    <ClInclude Include="include\Framework\Helper\Rect.h" />
+    <ClInclude Include="include\Framework\Resources\Font.h" />
+    <ClInclude Include="include\Framework\Resources\Texture.h" />
+    <ClInclude Include="include\Framework\Shader\GeometryBuffer.h" />
+    <ClInclude Include="include\Framework\Shader\MatrixHandler.h" />
+    <ClInclude Include="include\Framework\Shader\Shader.h" />
+    <ClInclude Include="include\Framework\Shader\ShaderAttributes.h" />
+    <ClInclude Include="include\Framework\Shader\ShaderProgram.h" />
+    <ClInclude Include="include\Framework\UniformStruct\Lightsource\PointLight.h" />
+    <ClInclude Include="include\Framework\UniformStruct\Material\BasicLightingMaterial.h" />
+    <ClInclude Include="include\Framework\UniformStruct\Material\Material.h" />
+    <ClInclude Include="include\Framework\UniformStruct\Material\TextureMaterial.h" />
+    <ClInclude Include="include\Framework\UniformStruct\UniformStruct.h" />
+    <ClInclude Include="include\Framework\VertexData\Vertex2DTex.h" />
+    <ClInclude Include="include\Framework\VertexData\Vertex3DTex.h" />
+    <ClInclude Include="include\Framework\VertexData\Vertex3DTexNorm.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="include\Framework\Drawable\Mesh.t" />
+    <None Include="include\Framework\Drawable\Mesh.tpp" />
+    <None Include="include\Framework\Drawable\Model.t" />
+    <None Include="include\Framework\Drawable\Model.tpp" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

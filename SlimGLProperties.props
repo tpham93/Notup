@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ImportGroup Label="PropertySheets" />
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup>
+    <IncludePath>$(ProjectDir)include;$(ProjectDir)..\slimGl\slimGL\include;$(ProjectDir)..\lib\freeglut\include;$(ProjectDir)..\lib\glew\include;$(ProjectDir)..\lib\DevIL\include;$(ProjectDir)..\lib\glm;$(ProjectDir)..\lib\ft253\freetype-2.5.3\include;$(ProjectDir)..\lib\assimp\include;$(IncludePath)</IncludePath>
+    <LibraryPath>$(ProjectDir)..\lib\freeglut\lib\x64;$(ProjectDir)..\lib\glew\lib\Release\x64;$(ProjectDir)..\lib\DevIL\lib;$(ProjectDir)..\lib\ft253\freetype-2.5.3\builds\windows\vc2010\x64;$(ProjectDir)..\lib\assimp\lib64;$(LibraryPath)</LibraryPath>
+    <SourcePath>$(ProjectDir)src;$(SourcePath)</SourcePath>
+    <OutDir>$(SolutionDir)$(ProjectName)\$(Platform)\$(Configuration)\</OutDir>
+  </PropertyGroup>
+  <ItemDefinitionGroup>
+    <Link>
+      <AdditionalDependencies>freeglut.lib;glew32.lib;glew32s.lib;DevIL.lib;ILU.lib;ILUT.lib;freetype253.lib;assimp.lib</AdditionalDependencies>
+    </Link>
+    <PostBuildEvent>
+      <Command>xcopy "$(ProjectDir)\files\*" "$(OutDir)" /s /e /i /d /y</Command>
+    </PostBuildEvent>
+  </ItemDefinitionGroup>
+  <ItemGroup />
+</Project>
