@@ -92,10 +92,4 @@ private:
 	GamestateType m_currentGameStateType;
 	std::shared_ptr<Gamestate> m_currentGamestate;
 	std::shared_ptr<Gamestate> m_pausedGamestate;
-
-	//std::shared_ptr<vrpn_Button_Remote> buttonRemote;
-	//std::shared_ptr<vrpn_Analog_Remote> analogRemote;
-
-	//vrpn_float64 analogValue;
-	//vrpn_int32 buttons[1];
 };

@@ -4,6 +4,7 @@
 #include <Framework/Shader/ShaderProgram.h>
 #include <Framework/Drawable/Sprite.h>
 #include <Framework/Drawable/Text.h>
+#include <Game/GameComponents/World.h>
 
 class ActualGame : public Gamestate
 {
@@ -18,4 +19,6 @@ public:
 
 private:
 	std::shared_ptr<ShaderProgram> m_textureShader;
+
+	World m_world;
 };

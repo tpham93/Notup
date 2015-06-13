@@ -152,6 +152,7 @@
     <ClInclude Include="include\Chip8\Chip8.h" />
     <ClInclude Include="include\Game\CustomGame.h" />
     <ClInclude Include="include\Game\GameComponents\Entities\Entity.h" />
+    <ClInclude Include="include\Game\GameComponents\Entities\Player.h" />
     <ClInclude Include="include\Game\GameComponents\World.h" />
     <ClInclude Include="include\Game\Gamestates\ActualGame.h" />
     <ClInclude Include="include\Game\Gamestates\Gamestate.h" />
@@ -161,6 +162,7 @@
   <ItemGroup>
     <ClCompile Include="src\Game\CustomGame.cpp" />
     <ClCompile Include="src\Game\GameComponents\Entity.cpp" />
+    <ClCompile Include="src\Game\GameComponents\Player.cpp" />
     <ClCompile Include="src\Game\GameComponents\World.cpp" />
     <ClCompile Include="src\Game\Gamestates\ActualGame.cpp" />
     <ClCompile Include="src\Game\Gamestates\Gamestate.cpp" />

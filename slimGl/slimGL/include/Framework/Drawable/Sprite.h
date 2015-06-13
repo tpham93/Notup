@@ -59,13 +59,13 @@ public:
 	* 	\brief				set the destination
 	* 	\param destination	the position and the size of the drawn texture
 	*/
-	void setDestination(Rect destination);
+	void setDestination(Rect destination, bool updateMatrices = true);
 
 	/*!
 	* 	\brief			set the destination the current width and height stays the same
 	* 	\param position	the position where the texture should be drawn
 	*/
-	void setDestination(glm::vec2 position);
+	void setDestination(glm::vec2 position, bool updateMatrices = true);
 
 	/*!
 	* 	\brief		get the source
@@ -85,6 +85,29 @@ public:
 	void setSource(Rect &source);
 
 	/*!
+	* 	\brief			set the origin
+	* 	\param origin	the point which should be considered as (0/0)
+	*/
+	void Sprite::setOrigin(glm::vec2 origin, bool updateMatrices = true);
+
+	/*!
+	* 	/overload glm::vec2  &Sprite::getOrigin()
+	*/
+	const glm::vec2 &Sprite::getOrigin() const;
+
+	/*!
+	* 	\brief			set the rotation
+	* 	\param rotation	the rotation
+	*/
+	void Sprite::setRotation(float rotation, bool updateMatrices = true);
+
+	/*!
+	* 	\brief				get the rotation
+	* 	\return rotation	the rotation
+	*/
+	float Sprite::getRotation() const;
+
+	/*!
 	* 	\brief initializing the buffers
 	*/
 	virtual void initialize() override;
@@ -94,6 +117,11 @@ public:
 	*/
 	virtual void draw();
 private:
+	/*!
+	* 	\brief	updating the matrices
+	*/
+	void updateMatrices();
+
 
 	//! the texture you want to draw
 	std::shared_ptr<const Texture> m_texture;
@@ -106,4 +134,12 @@ private:
 
 	//! the vertices for the texture
 	Vertex2DTex m_vertices[4];
+
+	//! the rotation of the texture
+	float m_rotation;
+
+	//! transformation of the texture
+	glm::mat4 m_modelMatrix;
+
+	glm::vec2 m_origin;
 };

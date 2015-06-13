@@ -57,7 +57,7 @@ bool CustomGame::loadContent()
 	m_textureShader->addShaderAttribute(ShaderAttributes(m_textureShader->getAttributeLocation("vertexPos2D"), sizeof(Vertex2DTex), GL_FLOAT, 2, reinterpret_cast<GLvoid*>(offsetof(Vertex2DTex, m_position))));
 	m_textureShader->addShaderAttribute(ShaderAttributes(m_textureShader->getAttributeLocation("textureCoord"), sizeof(Vertex2DTex), GL_FLOAT, 2, reinterpret_cast<GLvoid*>(offsetof(Vertex2DTex, m_texCoord))));
 
-	switchGamestate(GamestateType::MENU);
+	switchGamestate(GamestateType::GAME);
 
 	return true;
 }
@@ -71,8 +71,8 @@ void CustomGame::update()
 		glutLeaveMainLoop();
 	}
 
-	//buttonRemote->mainloop();
-	//analogRemote->mainloop();
+	
+
 
 	GamestateType nextGamestateType(m_currentGamestate->update());
 	if (nextGamestateType != GamestateType::NONE)

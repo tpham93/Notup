@@ -9,6 +9,8 @@
 class World
 {
 public:
+	World();
+
 	World(std::string background, std::string items);
 
 	World(std::vector<unsigned int> &background, std::vector<Entity> &items);
@@ -17,7 +19,7 @@ public:
 
 	void addItem(std::shared_ptr<Entity> e);
 
-	void update(GameTime& gameTime);
+	void update(const GameTime& gameTime);
 
 	void draw();
 private:

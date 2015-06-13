@@ -10,15 +10,22 @@ class Entity
 {
 
 public:
-	Entity(World &world, float radius);
+	Entity(World &world, float radius, glm::vec2 position, glm::vec2 size);
 
 	virtual ~Entity();
 
-	virtual void update(GameTime& gameTime) = 0;
+	virtual void update(const GameTime& gameTime) = 0;
 
 	virtual void draw();
 
-private:
+	static void setShaderProgram(std::shared_ptr<ShaderProgram> shaderProgram);
+
+protected:
+	static std::shared_ptr<ShaderProgram> m_shaderProgram;
+
 	World& m_world;
 	Sprite m_sprite;
+	float m_radius;
+	glm::vec2 m_pos;
+	glm::vec2 m_size;
 };

@@ -39,6 +39,9 @@
     <ClInclude Include="include\Game\GameComponents\Entities\Entity.h">
       <Filter>Headerdateien</Filter>
     </ClInclude>
+    <ClInclude Include="include\Game\GameComponents\Entities\Player.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Game\CustomGame.cpp">
@@ -60,6 +63,9 @@
       <Filter>Quelldateien</Filter>
     </ClCompile>
     <ClCompile Include="src\Game\GameComponents\Entity.cpp">
+      <Filter>Quelldateien</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Game\GameComponents\Player.cpp">
       <Filter>Quelldateien</Filter>
     </ClCompile>
   </ItemGroup>
