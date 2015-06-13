@@ -45,6 +45,6 @@ void Player::update(const GameTime& gameTime)
 	}
 
 	glm::vec2 relativeMousePos = m_input->getMousePositionV2() - glm::vec2(m_windowSize)/2.0f;
-	m_sprite.setRotation(glm::atan(relativeMousePos.y, relativeMousePos.x) + glm::pi<float>() / 2.0f, false);
+	//m_sprite.setRotation(glm::atan(relativeMousePos.y, relativeMousePos.x) + glm::pi<float>() / 2.0f, false);
 	m_sprite.setDestination(m_pos, true);
 }

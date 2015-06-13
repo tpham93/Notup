@@ -19,7 +19,7 @@ public:
 	virtual GamestateType getGamestateType() const;
 
 private:
-	std::shared_ptr<Player> m_player;
+	std::shared_ptr<Entity> m_player;
 	std::shared_ptr<ShaderProgram> m_textureShader;
 	std::map<std::string, std::shared_ptr<Texture>> tileTextures;
 	std::map<std::string, bool> tileCollidingInformation;

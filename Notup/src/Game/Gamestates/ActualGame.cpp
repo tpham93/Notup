@@ -59,19 +59,16 @@ bool ActualGame::loadContent()
 	}
 	pathFile.close();
 
-	std::shared_ptr<Texture> playerTexture = std::make_shared<Texture>();
-	playerTexture->loadTextureFromFile("Graphics/Entities/Player.png");
-	std::shared_ptr<Texture> backgroundTexture = std::make_shared<Texture>();
-	backgroundTexture->loadTextureFromFile("Graphics/background.png");
+	//std::shared_ptr<Texture> playerTexture = std::make_shared<Texture>();
+	//playerTexture->loadTextureFromFile("Graphics/Entities/Player.png");
 
 	Entity::setShaderProgram(m_textureShader);
-	m_player = std::make_shared<Player>(m_world, 10.0f, glm::vec2(0), glm::vec2(5, 5), playerTexture, m_input, m_windowSize);
-	std::shared_ptr<StaticObject> background = std::make_shared<StaticObject>(m_world, 10.0f, glm::vec2(0), glm::vec2(5, 5), backgroundTexture);
+	//m_player = std::make_shared<Player>(m_world, 10.0f, glm::vec2(0), glm::vec2(5, 5), playerTexture, m_input, m_windowSize);
 
-	m_world.loadMap("Maps/map0/", tileTextures);
-
+	m_world.loadMap("Maps/map6/", tileTextures, tileCollidingInformation, m_input);
+	m_player = m_world.getPlayer();
 	//m_world.addEntity(background);
-	m_world.addPlayer(m_player);
+	//m_world.addPlayer(m_player);
 
 	return true;
 }
@@ -79,7 +76,7 @@ bool ActualGame::loadContent()
 GamestateType ActualGame::update()
 {
 	std::ostringstream osS;
-	osS << m_gameTime.getElapsedGameTime();
+	osS << m_gameTime.getElapsedGameTime() << " POS:" << m_player->getPosition().x << "|" << m_player->getPosition().y;
 	glutSetWindowTitle(osS.str().c_str());
 
 	m_world.update(m_gameTime);
