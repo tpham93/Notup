@@ -1,0 +1,2 @@
+F0 Graphics/Tiles/Floor/F0.png 0
+W0 Graphics/Tiles/Wall/W0.png 0

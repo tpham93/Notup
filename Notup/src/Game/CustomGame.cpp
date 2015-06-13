@@ -6,6 +6,8 @@
 #include <glm/gtc/matrix_transform.hpp>
 #include <Game/Gamestates/Menu.h>
 #include <Game/Gamestates/ActualGame.h>
+#include <NvGamepad/NvGamepadXInput.h>
+#include <Xinput.h>
 
 CustomGame::CustomGame(int argc, char** argv)
 {
@@ -24,6 +26,8 @@ bool CustomGame::initialize()
 
 	glutSetWindowTitle("");
 
+	
+
 	//buttonRemote = std::make_shared<vrpn_Button_Remote>("openvibe-vrpn@localhost");
 	//analogRemote = std::make_shared<vrpn_Analog_Remote>("openvibe-vrpn@localhost");
 
@@ -32,8 +36,7 @@ bool CustomGame::initialize()
 
 	return true;
 }
-#include <iostream>
-#include <iomanip>
+
 bool CustomGame::loadContent()
 {
 	std::shared_ptr<Shader> fragShader = std::make_shared<Shader>("Shader/texture.frag", GL_FRAGMENT_SHADER);

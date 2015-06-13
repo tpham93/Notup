@@ -67,8 +67,8 @@
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
-    <IncludePath>$(ProjectDir)include;$(ProjectDir)..\..\lib\freeglut\include;$(ProjectDir)..\..\lib\glew\include;$(ProjectDir)..\..\lib\DevIL\include;$(ProjectDir)..\..\lib\glm;$(ProjectDir)..\..\lib\ft253\freetype-2.5.3\include;$(ProjectDir)..\..\lib\assimp\include;$(IncludePath)</IncludePath>
-    <LibraryPath>$(ProjectDir)..\..\lib\freeglut\lib\x64;$(ProjectDir)..\..\lib\glew\lib\Release\x64;$(ProjectDir)..\..\lib\DevIL\lib;$(ProjectDir)..\..\lib\ft253\freetype-2.5.3\builds\windows\vc2010\x64;$(ProjectDir)..\..\lib\assimp\lib64;$(LibraryPath)</LibraryPath>
+    <IncludePath>$(ProjectDir)include;$(ProjectDir)..\..\lib\freeglut\include;$(ProjectDir)..\..\lib\glew\include;$(ProjectDir)..\..\lib\DevIL\include;$(ProjectDir)..\..\lib\glm;$(ProjectDir)..\..\lib\ft253\freetype-2.5.3\include;$(ProjectDir)..\..\lib\assimp\include;$(ProjectDir)..\..\lib\nvgamepad\include;$(IncludePath)</IncludePath>
+    <LibraryPath>$(ProjectDir)..\..\lib\freeglut\lib\x64;$(ProjectDir)..\..\lib\glew\lib\Release\x64;$(ProjectDir)..\..\lib\DevIL\lib;$(ProjectDir)..\..\lib\ft253\freetype-2.5.3\builds\windows\vc2010\x64;$(ProjectDir)..\..\lib\assimp\lib64;$(ProjectDir)..\..\lib\nvgamepad\build\vs2012win32\x64\debug;$(LibraryPath)</LibraryPath>
     <SourcePath>$(ProjectDir)src;$(SourcePath)</SourcePath>
     <OutDir>$(SolutionDir)$(ProjectName)\$(Platform)\$(Configuration)\</OutDir>
   </PropertyGroup>
@@ -79,8 +79,8 @@
     <OutDir>$(SolutionDir)$(ProjectName)\$(Platform)\$(Configuration)\</OutDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
-    <IncludePath>$(ProjectDir)include;$(ProjectDir)..\..\lib\freeglut\include;$(ProjectDir)..\..\lib\glew\include;$(ProjectDir)..\..\lib\DevIL\include;$(ProjectDir)..\..\lib\glm;$(ProjectDir)..\..\lib\ft253\freetype-2.5.3\include;$(ProjectDir)..\..\lib\assimp\include;$(IncludePath)</IncludePath>
-    <LibraryPath>$(ProjectDir)..\..\lib\freeglut\lib\x64;$(ProjectDir)..\..\lib\glew\lib\Release\x64;$(ProjectDir)..\..\lib\DevIL\lib;$(ProjectDir)..\..\lib\ft253\freetype-2.5.3\builds\windows\vc2010\x64;$(ProjectDir)..\..\lib\assimp\lib64;$(LibraryPath)</LibraryPath>
+    <IncludePath>$(ProjectDir)include;$(ProjectDir)..\..\lib\freeglut\include;$(ProjectDir)..\..\lib\glew\include;$(ProjectDir)..\..\lib\DevIL\include;$(ProjectDir)..\..\lib\glm;$(ProjectDir)..\..\lib\ft253\freetype-2.5.3\include;$(ProjectDir)..\..\lib\assimp\include;$(ProjectDir)..\..\lib\nvgamepad\include;$(IncludePath)</IncludePath>
+    <LibraryPath>$(ProjectDir)..\..\lib\freeglut\lib\x64;$(ProjectDir)..\..\lib\glew\lib\Release\x64;$(ProjectDir)..\..\lib\DevIL\lib;$(ProjectDir)..\..\lib\ft253\freetype-2.5.3\builds\windows\vc2010\x64;$(ProjectDir)..\..\lib\assimp\lib64;$(ProjectDir)..\..\lib\nvgamepad\build\vs2012win32\x64\release;$(LibraryPath)</LibraryPath>
     <SourcePath>$(ProjectDir)src;$(SourcePath)</SourcePath>
     <OutDir>$(SolutionDir)$(ProjectName)\$(Platform)\$(Configuration)\</OutDir>
   </PropertyGroup>
@@ -108,6 +108,9 @@
       <Command>
       </Command>
     </PostBuildEvent>
+    <Lib>
+      <AdditionalDependencies>libNvGamepadD.lib</AdditionalDependencies>
+    </Lib>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
@@ -152,6 +155,9 @@
       <Command>
       </Command>
     </PostBuildEvent>
+    <Lib>
+      <AdditionalDependencies>NvGamepad.lib</AdditionalDependencies>
+    </Lib>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <ClCompile>

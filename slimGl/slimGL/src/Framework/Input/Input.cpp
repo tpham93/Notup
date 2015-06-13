@@ -23,7 +23,8 @@ Input::Input(bool isVirtual, glm::ivec2 screenSize)
 	m_lastMouseWheelValue(),
 	m_isVirtual(isVirtual),
 	m_screenSize(screenSize),
-	m_outputMousePosition(screenSize/2)
+	m_outputMousePosition(screenSize/2),
+	m_controller(std::make_unique<NvGamepadXInput>())
 {
 	if (isVirtual)
 	{
@@ -277,4 +278,17 @@ void Input::setMousePosition(int x, int y, bool resetMouseMovement, bool setVirt
 		m_currentMousePosition = glm::ivec2(x, y);
 	}
 
+}
+
+NvGamepad::State Input::getControllerState(int controllerId)
+{
+	NvGamepad::State state;
+	m_controller->getState(controllerId, state);
+	return state;
+}
+
+bool Input::isControllerConnected(int controllerId)
+{
+	NvGamepad::State state;
+	return m_controller->getState(controllerId, state);
 }

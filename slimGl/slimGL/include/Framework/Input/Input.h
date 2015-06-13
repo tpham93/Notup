@@ -8,6 +8,9 @@
 #include <vector>
 #include <glm/glm.hpp>
 #include <Framework/Input/MouseButton.h>
+#include <memory>
+#include <NvGamepad/NvGamepad.h>
+#include <NvGamepad/NvGamepadXInput.h>
 
 /********************************************************************************************** 
 * 										class declaration
@@ -189,6 +192,20 @@ public:
 	*/
 	void setMousePosition(int x, int y, bool resetMouseMovement, bool setVirtualMouse = true, bool setCurrentMousePosition = true);
 
+	/*!
+	* 	\brief		get the state of a controller
+	*	\param id	the id of the controller
+	*	\return state of the controller
+	*/
+	NvGamepad::State getControllerState(int controllerId);
+
+	/*!
+	* 	\brief		check if a controller is connected
+	*	\param id	the id of the controller
+	*	\return true if connected
+	*/
+	bool isControllerConnected(int controllerId);
+
 private:
 
 	/*!
@@ -223,4 +240,7 @@ private:
 	bool m_isVirtual;
 	glm::ivec2 m_screenSize;
 	glm::ivec2 m_outputMousePosition;
+
+	//! conntroller
+	std::unique_ptr<NvGamepad> m_controller;
 };

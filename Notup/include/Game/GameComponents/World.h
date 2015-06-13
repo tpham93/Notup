@@ -11,7 +11,7 @@ class World
 public:
 	World();
 
-	World(std::string background, std::string items);
+	World(std::string background´Path, std::string itemsPath);
 
 	World(std::vector<unsigned int> &background, std::vector<Entity> &items);
 
