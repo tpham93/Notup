@@ -22,6 +22,8 @@ public:
 
 	const glm::vec2& getPosition() const;
 
+	void setPosition(glm::vec2 pos);
+
 protected:
 	static std::shared_ptr<ShaderProgram> m_shaderProgram;
 

@@ -24,10 +24,10 @@ Rect::Rect(glm::vec2 topLeft, glm::vec2 bottomRight)
 
 bool Rect::intersects(const Rect &rect)
 {
-	return m_x <= rect.m_x + rect.m_width
-		  &&m_x + m_width >= rect.m_x
-		  &&m_y <= rect.m_y + rect.m_height
-		  &&m_y + m_height >= rect.m_y;
+	return m_x < rect.m_x + rect.m_width
+		  &&m_x + m_width > rect.m_x
+		  &&m_y < rect.m_y + rect.m_height
+		  &&m_y + m_height > rect.m_y;
 }
 
 float Rect::getX() const

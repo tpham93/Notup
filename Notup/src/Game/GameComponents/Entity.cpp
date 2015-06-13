@@ -27,8 +27,12 @@ void Entity::setShaderProgram(std::shared_ptr<ShaderProgram> shaderProgram)
 	m_shaderProgram = shaderProgram;
 }
 
-
 const glm::vec2& Entity::getPosition() const
 {
 	return m_pos;
+}
+
+void Entity::setPosition(glm::vec2 pos)
+{
+	m_pos = pos;
 }
