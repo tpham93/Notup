@@ -5,15 +5,16 @@
 #include<glm/glm.hpp>
 
 #include<Game/GameComponents/Entities/Entity.h>
+#include <map>
 
 class World
 {
 public:
 	World();
 
-	World(std::string background´Path, std::string itemsPath);
+	void loadMap(const std::string &backgroundPath, std::map<std::string, std::shared_ptr<Texture>> tileTextures);
 
-	World(std::vector<unsigned int> &background, std::vector<Entity> &items);
+	void addPlayer(std::shared_ptr<Entity> e);
 
 	void addEntity(std::shared_ptr<Entity> e);
 
@@ -22,9 +23,15 @@ public:
 	void update(const GameTime& gameTime);
 
 	void draw();
+
+	void setWindowSize(glm::ivec2 windowSize);
 private:
 	std::vector<unsigned int> m_backGround;
+	std::shared_ptr<Entity> m_player;
 	std::vector<std::shared_ptr<Entity>> m_items;
 	std::vector<std::shared_ptr<Entity>> m_entities;
-	glm::vec2 m_size;
+	std::vector<std::shared_ptr<Entity>> m_updateableEntities;
+	std::vector<std::shared_ptr<Entity>> m_background;
+	glm::ivec2 m_size;
+	glm::ivec2 m_windowSize;
 };

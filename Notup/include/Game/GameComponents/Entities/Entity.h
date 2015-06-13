@@ -20,6 +20,8 @@ public:
 
 	static void setShaderProgram(std::shared_ptr<ShaderProgram> shaderProgram);
 
+	const glm::vec2& getPosition() const;
+
 protected:
 	static std::shared_ptr<ShaderProgram> m_shaderProgram;
 

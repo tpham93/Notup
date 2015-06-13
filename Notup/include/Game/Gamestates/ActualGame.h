@@ -5,6 +5,7 @@
 #include <Framework/Drawable/Sprite.h>
 #include <Framework/Drawable/Text.h>
 #include <Game/GameComponents/World.h>
+#include <Game/GameComponents/Entities/Player.h>
 
 class ActualGame : public Gamestate
 {
@@ -18,7 +19,9 @@ public:
 	virtual GamestateType getGamestateType() const;
 
 private:
+	std::shared_ptr<Player> m_player;
 	std::shared_ptr<ShaderProgram> m_textureShader;
-
+	std::map<std::string, std::shared_ptr<Texture>> tileTextures;
+	std::map<std::string, bool> tileCollidingInformation;
 	World m_world;
 };
