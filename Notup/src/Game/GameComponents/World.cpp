@@ -262,58 +262,33 @@ void World::update(const GameTime &gameTime)
 		e->setPosition(oldPos);
 	}
 
-	for (int i = 0; i < m_updateableEntities.size(); ++i)
+	for (int i = 1; i < m_updateableEntities.size(); ++i)
 	{
 		std::shared_ptr<Entity> ei = m_updateableEntities[i];
 		if (ei->drawNormal())
 		{
-			for (int j = 0; j < m_updateableEntities.size(); ++j)
+			glm::vec2 tmpPosI = ei->getPosition();
+			glm::vec2 sizeI = ei->getSize();
+			Rect rI = Rect(tmpPosI - sizeI / 2.0f, tmpPosI + sizeI / 2.0f);
+			for (int j = i+1; j < m_updateableEntities.size(); ++j)
 			{
-				std::shared_ptr<Entity> ej = m_updateableEntities[i];
-				if (ej->drawNormal())
+				std::shared_ptr<Entity> ej = m_updateableEntities[j];
+				if (!ej->drawNormal())
 				{
-				}
-			}
-		}
+					glm::vec2 tmpPosJ = ej->getPosition();
+					glm::vec2 sizeJ = ej->getSize();
+					Rect rJ = Rect(tmpPosJ - sizeJ / 2.0f, tmpPosJ + sizeJ / 2.0f);
 
-		glm::vec2 oldPos = oldPositions[i];
-		glm::vec2 newPos = e->getPosition();
-		glm::vec2 movement = newPos - oldPos;
-		glm::vec2 components[2] = { glm::vec2(1, 0), glm::vec2(0, 1) };
-		for (int c = 0; c < 2; ++c)
-		{
-			glm::ivec2 pos = worldToTile(oldPos);
-			glm::vec2 tmpPos = oldPos + movement * components[c];
-			glm::vec2 size = e->getSize();
-			Rect rEntity = Rect(tmpPos - size / 2.0f, tmpPos + size / 2.0f);
-			bool collision = false;
-			for (int y = -1; y <= 1 && !collision; ++y)
-			{
-				for (int x = -1; x <= 1 && !collision; ++x)
-				{
-					if (!(y == 0 && x == 0))
+					if (rI.intersects(rJ))
 					{
-						glm::ivec2 tilePos = pos + glm::ivec2(x, y);
-						unsigned int backgroundIndex = tileToIndex(tilePos);
-						if (tilePos.x >= 0 && tilePos.y >= 0 && tilePos.x < m_size.x && tilePos.y < m_size.y && m_backgroundColliding[backgroundIndex])
-						{
-							glm::vec2 tileWorldPos = tileToWorld(tilePos);
-							Rect rTile = Rect(tileWorldPos, tileWorldPos + Constants::TILE_SIZE);
-							collision |= rEntity.intersects(rTile);
-							if (collision)
-							{
-								e->collision(m_background[backgroundIndex]);
-							}
-						}
+						bool eIN = ei->drawNormal();
+						bool eJN = ej->drawNormal();
+						ei->collision(ej);
+						ej->collision(ei);
 					}
 				}
 			}
-			if (!collision)
-			{
-				oldPos = tmpPos;
-			}
 		}
-		e->setPosition(oldPos);
 	}
 
 	deleteDeadEntities();

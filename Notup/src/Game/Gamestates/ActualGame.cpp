@@ -36,8 +36,11 @@ bool ActualGame::loadContent()
 	// loading textures
 	std::ifstream pathFile;
 	pathFile.open("Maps/paths.txt", std::ios_base::out);
+	std::string levelPath;
 	if (pathFile)
 	{
+		std::getline(pathFile, levelPath);
+		std::istringstream iSs(levelPath);
 		while (!pathFile.eof())
 		{
 			std::string line;
@@ -65,7 +68,7 @@ bool ActualGame::loadContent()
 	Entity::setShaderProgram(m_textureShader);
 	//m_player = std::make_shared<Player>(m_world, 10.0f, glm::vec2(0), glm::vec2(5, 5), playerTexture, m_input, m_windowSize);
 
-	m_world.loadMap("Maps/map6/", tileTextures, tileCollidingInformation, m_input);
+	m_world.loadMap(levelPath, tileTextures, tileCollidingInformation, m_input);
 	m_player = m_world.getPlayer();
 	//m_world.addEntity(background);
 	//m_world.addPlayer(m_player);

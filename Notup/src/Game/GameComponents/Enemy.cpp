@@ -94,7 +94,7 @@ void Enemy::collision(std::shared_ptr<Entity> e)
 	}
 	else
 	{
-		m_hp -= 0.01f;
+		m_hp -= 0.1f;
 		if (m_hp < 0.0f)
 		{
 			m_alive = false;

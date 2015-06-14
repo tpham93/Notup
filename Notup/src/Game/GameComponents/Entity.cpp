@@ -23,6 +23,10 @@ void Entity::draw()
 	m_sprite.draw();
 }
 
+void Entity::collision(std::shared_ptr<Entity> e)
+{
+}
+
 void Entity::setShaderProgram(std::shared_ptr<ShaderProgram> shaderProgram)
 {
 	m_shaderProgram = shaderProgram;
