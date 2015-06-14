@@ -18,5 +18,5 @@ void main()
 {
 	vec4 baseColor = texture(groundTexture, texCoord);
 	vec4 lightColor = texture(lightTexture, texCoord);
-	fragColor = vec4(mix(baseColor.xyz,lightColor.xyz, (1.0-lightColor.z) * 0.7),1.0) * textureColor;
+	fragColor = vec4(mix(baseColor.xyz,baseColor.xyz * lightColor.xyz, (1.0-lightColor.z)),1.0) * textureColor;
 }

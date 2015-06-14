@@ -19,4 +19,8 @@ namespace Constants
 	const float ENEMY_TARGET_COOLDOWN_CONST = 500.0f;
 	const float PLAYER_SPEED = 500.0f;
 	const float PLAYER_FLASHLIGHT_MAX_TIME = 30000.0f;
+	const float PLAYER_FLASHLIGHT_RATE = 1.0f;
+	const glm::vec2 LIGHT_OFFSET = glm::vec2(0, 0);
+	const float LIGHT_SPEED = 1000.0f;
+	const float LIGHT_TIME = 500;
 };

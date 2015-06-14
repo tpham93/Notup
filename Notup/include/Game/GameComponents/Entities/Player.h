@@ -7,7 +7,7 @@
 class Player : public Entity
 {
 public:
-	Player(World &world, float radius, glm::vec2 position, glm::vec2 size, std::shared_ptr<Texture> texture, std::shared_ptr<Input> input, glm::ivec2 windowSize);
+	Player(World &world, float radius, glm::vec2 position, glm::vec2 size, std::shared_ptr<Texture> texture, std::shared_ptr<Texture> lightTexture, std::shared_ptr<Input> input, glm::ivec2 windowSize);
 
 	virtual void update(const GameTime& gameTime);
 
@@ -19,4 +19,5 @@ private:
 	std::shared_ptr<Input> m_input;
 	glm::vec2 m_windowSize;
 	float m_energy;
+	std::shared_ptr<Texture> m_lightTexture;
 };

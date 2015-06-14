@@ -7,7 +7,8 @@ std::shared_ptr<ShaderProgram> Entity::m_shaderProgram(nullptr);
 Entity::Entity(World &world, float radius, glm::vec2 position, glm::vec2 size)
 	:m_world(world),
 	m_pos(position),
-	m_size(size)
+	m_size(size),
+	m_alive(true)
 {
 
 }
@@ -42,16 +43,19 @@ void Entity::setIndex(unsigned int index)
 	m_index = index;
 }
 
-unsigned int Entity::getIndex()
+unsigned int &Entity::getIndex()
 {
 	return m_index;
-}
-
-void Entity::collision(std::shared_ptr<Entity> e)
-{
-
 }
 glm::vec2 Entity::getSize()
 {
 	return m_size;
+}
+bool Entity::isAlive()
+{
+	return m_alive;
+}
+bool Entity::drawNormal()
+{
+	return true;
 }

@@ -34,11 +34,15 @@ public:
 
 	void setIndex(unsigned int index);
 
-	unsigned int getIndex();
+	unsigned int &getIndex();
 
 	virtual void collision(std::shared_ptr<Entity> e);
 
 	glm::vec2 getSize();
+
+	bool isAlive();
+
+	virtual bool drawNormal();
 
 protected:
 	static std::shared_ptr<ShaderProgram> m_shaderProgram;
@@ -49,4 +53,5 @@ protected:
 	glm::vec2 m_pos;
 	glm::vec2 m_size;
 	unsigned int m_index;
+	bool m_alive;
 };

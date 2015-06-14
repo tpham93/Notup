@@ -159,6 +159,7 @@
     <ClInclude Include="include\Game\CustomGame.h" />
     <ClInclude Include="include\Game\GameComponents\Entities\Enemy.h" />
     <ClInclude Include="include\Game\GameComponents\Entities\Entity.h" />
+    <ClInclude Include="include\Game\GameComponents\Entities\LightParticle.h" />
     <ClInclude Include="include\Game\GameComponents\Entities\Player.h" />
     <ClInclude Include="include\Game\GameComponents\Entities\Spawner.h" />
     <ClInclude Include="include\Game\GameComponents\Entities\StaticObject.h" />
@@ -173,6 +174,7 @@
     <ClCompile Include="src\Game\CustomGame.cpp" />
     <ClCompile Include="src\Game\GameComponents\Enemy.cpp" />
     <ClCompile Include="src\Game\GameComponents\Entity.cpp" />
+    <ClCompile Include="src\Game\GameComponents\LightParticle.cpp" />
     <ClCompile Include="src\Game\GameComponents\Player.cpp" />
     <ClCompile Include="src\Game\GameComponents\Spawner.cpp" />
     <ClCompile Include="src\Game\GameComponents\StaticObject.cpp" />

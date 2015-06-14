@@ -10,6 +10,7 @@
 #include <iostream>
 #include <glm/gtc/matrix_transform.hpp>
 #include <Framework/Shader/Shader.h>
+#include <set>
 
 const unsigned int World::FRAMEBUFFER_NUM;
 
@@ -18,7 +19,8 @@ World::World(std::shared_ptr<ShaderProgram> textureShader, glm::ivec2 windowSize
 	m_size(0),
 	m_entities(),
 	m_windowSize(windowSize),
-	m_textureShader(textureShader)
+	m_textureShader(textureShader),
+	m_playerSightField()
 {
 	std::shared_ptr<MatrixHandler> matrixHandler = m_textureShader->getMatrixHandlerPtr();
 
@@ -73,10 +75,11 @@ World::World(std::shared_ptr<ShaderProgram> textureShader, glm::ivec2 windowSize
 		m_framebufferSprite[i].setOrigin(glm::vec2(0.0f));
 		m_framebufferSprite[i].setDestination(Rect(0, m_windowSize.y, static_cast<float>(m_windowSize.x), -static_cast<float>(m_windowSize.y)));
 	}
+
 	delete[] framebufferData;
 }
-
-void World::loadMap(const std::string &mapFolder, std::map<std::string, std::shared_ptr<Texture>> tileTextures, std::map<std::string, bool> collidingInfo, std::shared_ptr<Input> input)
+#include<GL/freeglut.h>
+void World::loadMap(const std::string &mapFolder, std::map<std::string, std::shared_ptr<Texture>> &tileTextures, std::map<std::string, bool> &collidingInfo, std::shared_ptr<Input> input)
 {
 	std::ostringstream itemPath;
 	itemPath << mapFolder << "items.txt";
@@ -137,7 +140,7 @@ void World::loadMap(const std::string &mapFolder, std::map<std::string, std::sha
 				int x;
 				int y;
 				iSs >> x >> y;
-				std::shared_ptr<Entity> e = std::make_shared<Player>(*this, 10.0f, tileToWorld(glm::ivec2(x, y)) + Constants::TILE_SIZE / 2.0f, Constants::TILE_SIZE, tileTextures["PLAYER"], input, m_windowSize);
+				std::shared_ptr<Entity> e = std::make_shared<Player>(*this, 10.0f, tileToWorld(glm::ivec2(x, y)) + Constants::TILE_SIZE / 2.0f, Constants::TILE_SIZE, tileTextures["PLAYER"], tileTextures["LIGHT_PARTICLE"], input, m_windowSize);
 				addPlayer(e);
 			}
 			else if (type == "SPAWNER")
@@ -160,6 +163,13 @@ void World::loadMap(const std::string &mapFolder, std::map<std::string, std::sha
 		}
 	}
 	m_size = mapSize;
+
+
+	m_playerSightField.initialize();
+	m_playerSightField.setTexture(tileTextures["PLAYER_SIGHT_FIELD"]);
+	m_playerSightField.setShaderProgram(m_textureShader);
+	m_playerSightField.setOrigin(glm::vec2(m_playerSightField.getTexture().getWidth(), m_playerSightField.getTexture().getHeight()) / 2.0f);
+
 }
 
 void World::addPlayer(std::shared_ptr<Entity> e)
@@ -171,7 +181,15 @@ void World::addPlayer(std::shared_ptr<Entity> e)
 void World::addEntity(std::shared_ptr<Entity> e)
 {
 	e->setIndex(m_entities.size());
-	m_updateableEntities.push_back(m_entities.size());
+	m_updateableEntities.push_back(e);
+	m_entities.push_back(e);
+}
+
+void World::addLight(std::shared_ptr<Entity> e)
+{
+	e->setIndex(m_entities.size());
+	m_updateableEntities.push_back(e);
+	m_light.push_back(e);
 	m_entities.push_back(e);
 }
 
@@ -183,7 +201,7 @@ std::shared_ptr<Entity> World::getPlayer()
 void World::addItem(std::shared_ptr<Entity> e)
 {
 	e->setIndex(m_entities.size());
-	m_items.push_back(m_entities.size());
+	m_items.push_back(e);
 	m_entities.push_back(e);
 }
 
@@ -192,26 +210,27 @@ void World::update(const GameTime &gameTime)
 	std::vector<glm::vec2> oldPositions;
 	for (int i = 0; i < m_updateableEntities.size(); ++i)
 	{
-		oldPositions.push_back(m_entities[m_updateableEntities[i]]->getPosition());
-		m_entities[m_updateableEntities[i]]->update(gameTime);
+		oldPositions.push_back(m_updateableEntities[i]->getPosition());
+		m_updateableEntities[i]->update(gameTime);
 	}
 
 	for (int i = 0; i < m_items.size(); ++i)
 	{
-		m_entities[m_updateableEntities[i]]->update(gameTime);
+		m_updateableEntities[i]->update(gameTime);
 	}
 
 	for (int i = 0; i < m_updateableEntities.size(); ++i)
 	{
+		std::shared_ptr<Entity> e = m_updateableEntities[i];
 		glm::vec2 oldPos = oldPositions[i];
-		glm::vec2 newPos = m_entities[m_updateableEntities[i]]->getPosition();
+		glm::vec2 newPos = e->getPosition();
 		glm::vec2 movement = newPos - oldPos;
 		glm::vec2 components[2] = { glm::vec2(1, 0), glm::vec2(0, 1) };
 		for (int c = 0; c < 2; ++c)
 		{
 			glm::ivec2 pos = worldToTile(oldPos);
 			glm::vec2 tmpPos = oldPos + movement * components[c];
-			glm::vec2 size = m_entities[m_updateableEntities[i]]->getSize();
+			glm::vec2 size = e->getSize();
 			Rect rEntity = Rect(tmpPos - size / 2.0f, tmpPos + size / 2.0f);
 			bool collision = false;
 			for (int y = -1; y <= 1 && !collision; ++y)
@@ -229,7 +248,7 @@ void World::update(const GameTime &gameTime)
 							collision |= rEntity.intersects(rTile);
 							if (collision)
 							{
-								m_entities[m_updateableEntities[i]]->collision(m_background[backgroundIndex]);
+								e->collision(m_background[backgroundIndex]);
 							}
 						}
 					}
@@ -240,9 +259,64 @@ void World::update(const GameTime &gameTime)
 				oldPos = tmpPos;
 			}
 		}
-		m_entities[m_updateableEntities[i]]->setPosition(oldPos);
+		e->setPosition(oldPos);
 	}
 
+	for (int i = 0; i < m_updateableEntities.size(); ++i)
+	{
+		std::shared_ptr<Entity> ei = m_updateableEntities[i];
+		if (ei->drawNormal())
+		{
+			for (int j = 0; j < m_updateableEntities.size(); ++j)
+			{
+				std::shared_ptr<Entity> ej = m_updateableEntities[i];
+				if (ej->drawNormal())
+				{
+				}
+			}
+		}
+
+		glm::vec2 oldPos = oldPositions[i];
+		glm::vec2 newPos = e->getPosition();
+		glm::vec2 movement = newPos - oldPos;
+		glm::vec2 components[2] = { glm::vec2(1, 0), glm::vec2(0, 1) };
+		for (int c = 0; c < 2; ++c)
+		{
+			glm::ivec2 pos = worldToTile(oldPos);
+			glm::vec2 tmpPos = oldPos + movement * components[c];
+			glm::vec2 size = e->getSize();
+			Rect rEntity = Rect(tmpPos - size / 2.0f, tmpPos + size / 2.0f);
+			bool collision = false;
+			for (int y = -1; y <= 1 && !collision; ++y)
+			{
+				for (int x = -1; x <= 1 && !collision; ++x)
+				{
+					if (!(y == 0 && x == 0))
+					{
+						glm::ivec2 tilePos = pos + glm::ivec2(x, y);
+						unsigned int backgroundIndex = tileToIndex(tilePos);
+						if (tilePos.x >= 0 && tilePos.y >= 0 && tilePos.x < m_size.x && tilePos.y < m_size.y && m_backgroundColliding[backgroundIndex])
+						{
+							glm::vec2 tileWorldPos = tileToWorld(tilePos);
+							Rect rTile = Rect(tileWorldPos, tileWorldPos + Constants::TILE_SIZE);
+							collision |= rEntity.intersects(rTile);
+							if (collision)
+							{
+								e->collision(m_background[backgroundIndex]);
+							}
+						}
+					}
+				}
+			}
+			if (!collision)
+			{
+				oldPos = tmpPos;
+			}
+		}
+		e->setPosition(oldPos);
+	}
+
+	deleteDeadEntities();
 }
 
 void World::draw()
@@ -269,9 +343,22 @@ void World::draw()
 		}
 	}
 
-	for (unsigned int i : m_updateableEntities)
+	for (std::shared_ptr<Entity> e : m_updateableEntities)
 	{
-		m_entities[i]->draw();
+		if (e->drawNormal())
+		{
+			e->draw();
+		}
+	}
+
+	glBindFramebuffer(GL_FRAMEBUFFER, m_framebufferId[1]);
+	glClear(GL_COLOR_BUFFER_BIT);
+	m_playerSightField.setDestination(m_player->getPosition(), true);
+	m_playerSightField.draw();
+
+	for (std::shared_ptr<Entity> e : m_light)
+	{
+		e->draw();
 	}
 
 	glBindFramebuffer(GL_FRAMEBUFFER, 0);
@@ -298,10 +385,20 @@ unsigned int World::tileToIndex(glm::ivec2 pos)
 	return pos.x + pos.y * m_size.x;
 }
 
-void World::removeEntity(unsigned int index)
+void World::deleteDeadEntities()
 {
-	for (int i = m_entities.size() - 1; i > index; ++i)
+	deleteDeadEntities(m_entities);
+	deleteDeadEntities(m_light);
+	deleteDeadEntities(m_items);
+	deleteDeadEntities(m_updateableEntities);
+}
+void World::deleteDeadEntities(std::vector<std::shared_ptr<Entity>> &entities)
+{
+	for (int i = entities.size() - 1; i >= 0; --i)
 	{
-
+		if (!entities[i]->isAlive())
+		{
+			entities.erase(entities.begin() + i);
+		}
 	}
 }

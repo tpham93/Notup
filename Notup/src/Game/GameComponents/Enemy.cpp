@@ -15,7 +15,8 @@ Enemy::Enemy(World &world, float radius, glm::vec2 position, glm::vec2 size, std
 	m_targetPosition(),
 	m_direction(),
 	m_time(0.0f),
-	m_targetCooldown(0.0f)
+	m_targetCooldown(0.0f),
+	m_hp(100.0f)
 {
 	m_sprite.initialize();
 	m_sprite.setShaderProgram(m_shaderProgram);
@@ -81,11 +82,22 @@ bool Enemy::inHearRadius(std::shared_ptr<Entity> e)
 
 void Enemy::collision(std::shared_ptr<Entity> e)
 {
-	m_targetPosition = glm::vec2(0.0f);
-	m_time = 0.0f;
-	if (m_target != nullptr)
+	if (e->drawNormal())
 	{
-		m_target = nullptr;
-		m_targetCooldown = Constants::ENEMY_TARGET_COOLDOWN_CONST + (Random::nextFloat()* Constants::ENEMY_TARGET_COOLDOWN);
+		m_targetPosition = glm::vec2(0.0f);
+		m_time = 0.0f;
+		if (m_target != nullptr)
+		{
+			m_target = nullptr;
+			m_targetCooldown = Constants::ENEMY_TARGET_COOLDOWN_CONST + (Random::nextFloat()* Constants::ENEMY_TARGET_COOLDOWN);
+		}
+	}
+	else
+	{
+		m_hp -= 0.01f;
+		if (m_hp < 0.0f)
+		{
+			m_alive = false;
+		}
 	}
 }

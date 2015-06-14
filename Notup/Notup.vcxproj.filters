@@ -57,6 +57,9 @@
     <ClInclude Include="include\Game\GameComponents\Random.h">
       <Filter>Headerdateien</Filter>
     </ClInclude>
+    <ClInclude Include="include\Game\GameComponents\Entities\LightParticle.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Game\CustomGame.cpp">
@@ -93,6 +96,9 @@
       <Filter>Quelldateien</Filter>
     </ClCompile>
     <ClCompile Include="src\Game\Random.cpp">
+      <Filter>Quelldateien</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Game\GameComponents\LightParticle.cpp">
       <Filter>Quelldateien</Filter>
     </ClCompile>
   </ItemGroup>
