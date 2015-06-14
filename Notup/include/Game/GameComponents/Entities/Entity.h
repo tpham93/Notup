@@ -6,6 +6,14 @@
 
 class World;
 
+enum class EntityType
+{
+	Player,
+	Background,
+	Enemy,
+	Spawner
+};
+
 class Entity
 {
 
@@ -24,6 +32,14 @@ public:
 
 	void setPosition(glm::vec2 pos);
 
+	void setIndex(unsigned int index);
+
+	unsigned int getIndex();
+
+	virtual void collision(std::shared_ptr<Entity> e);
+
+	glm::vec2 getSize();
+
 protected:
 	static std::shared_ptr<ShaderProgram> m_shaderProgram;
 
@@ -32,4 +48,5 @@ protected:
 	float m_radius;
 	glm::vec2 m_pos;
 	glm::vec2 m_size;
+	unsigned int m_index;
 };

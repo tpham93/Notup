@@ -23,7 +23,8 @@ Sprite::Sprite(std::shared_ptr<const Texture> texture)
 	m_destination(0.0f, 0.0f, (texture == nullptr) ? 0.0f : static_cast<float>(texture->getWidth()), (texture == nullptr) ? 0.0f : static_cast<float>(texture->getHeight())),
 	m_source(0.0f, 0.0f, (texture == nullptr) ? 0.0f : static_cast<float>(texture->getWidth()), (texture == nullptr) ? 0.0f : static_cast<float>(texture->getHeight())),
 	m_rotation(0.0f),
-	m_origin(0.0f)
+	m_origin(0.0f),
+	m_depth(0.0f)
 {
 
 }
@@ -130,6 +131,20 @@ float Sprite::getRotation() const
 	return m_rotation;
 }
 
+void Sprite::setDepth(float depth, bool update)
+{
+	m_depth = depth;
+	if (update)
+	{
+		updateMatrices();
+	}
+}
+
+float Sprite::getDepth() const
+{
+	return m_depth;
+}
+
 void Sprite::initialize()
 {
 	// create the initial data for the buffer
@@ -196,7 +211,7 @@ void Sprite::updateMatrices()
 	glm::vec2 scale(m_destination.getWidth() / m_texture->getWidth(), m_destination.getHeight() / m_texture->getHeight());
 	glm::vec2 pos(m_destination.getX(), m_destination.getY());
 	m_modelMatrix = glm::mat4();
-	m_modelMatrix = glm::translate(m_modelMatrix, glm::vec3(pos, 0.0f));
+	m_modelMatrix = glm::translate(m_modelMatrix, glm::vec3(pos, m_depth));
 	m_modelMatrix = glm::rotate(m_modelMatrix, m_rotation, glm::vec3(0.0f, 0.0f, 1.0f));
 	m_modelMatrix = glm::scale(m_modelMatrix, glm::vec3(scale, 1.0f));
 	m_modelMatrix = glm::translate(m_modelMatrix, -glm::vec3(m_origin, 0.0f));

@@ -12,12 +12,14 @@
 
 #include <Framework/Helper/Helper.h>
 #include <Game/GameComponents/Entities/StaticObject.h>
+#include <Game/GameComponents/Random.h>
 
 ActualGame::ActualGame(std::shared_ptr<Input>input, const GameTime &gameTime, glm::ivec2 &windowSize, std::shared_ptr<ShaderProgram> textureShader)
 	: Gamestate(input, gameTime, windowSize),
 	m_textureShader(textureShader),
-	m_world()
+	m_world(textureShader, windowSize)
 {
+	Random::randomize();
 }
 
 ActualGame::~ActualGame()
@@ -26,8 +28,6 @@ ActualGame::~ActualGame()
 
 bool ActualGame::initialize()
 {
-	m_world.setWindowSize(m_windowSize);
-
 	return true;
 }
 
@@ -85,9 +85,6 @@ GamestateType ActualGame::update()
 
 void ActualGame::draw()
 {
-	m_textureShader->use();
-	glm::mat4 & modelMatrix = m_textureShader->getMatrixHandler().getMatrix("modelMatrix");
-	modelMatrix = glm::translate(glm::mat4(), -glm::vec3(m_player->getPosition(),0) + glm::vec3(m_windowSize,0)/2.0f);
 	m_world.draw();
 } 
 

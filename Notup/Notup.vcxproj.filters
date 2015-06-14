@@ -48,6 +48,15 @@
     <ClInclude Include="include\Game\Constants.h">
       <Filter>Headerdateien</Filter>
     </ClInclude>
+    <ClInclude Include="include\Game\GameComponents\Entities\Spawner.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Game\GameComponents\Entities\Enemy.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Game\GameComponents\Random.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Game\CustomGame.cpp">
@@ -77,5 +86,70 @@
     <ClCompile Include="src\Game\GameComponents\StaticObject.cpp">
       <Filter>Quelldateien</Filter>
     </ClCompile>
+    <ClCompile Include="src\Game\GameComponents\Spawner.cpp">
+      <Filter>Quelldateien</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Game\GameComponents\Enemy.cpp">
+      <Filter>Quelldateien</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Game\Random.cpp">
+      <Filter>Quelldateien</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="files\Graphics\Entities\Enemy.png">
+      <Filter>Ressourcendateien</Filter>
+    </Image>
+    <Image Include="files\Graphics\Entities\Player.png">
+      <Filter>Ressourcendateien</Filter>
+    </Image>
+    <Image Include="files\Graphics\Tiles\Floor\F0.png">
+      <Filter>Ressourcendateien</Filter>
+    </Image>
+    <Image Include="files\Graphics\Tiles\Wall\W0.png">
+      <Filter>Ressourcendateien</Filter>
+    </Image>
+    <Image Include="files\Graphics\background.png">
+      <Filter>Ressourcendateien</Filter>
+    </Image>
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="files\Maps\map0\items.txt" />
+    <Text Include="files\Maps\map0\map.txt" />
+    <Text Include="files\Maps\map1\items.txt" />
+    <Text Include="files\Maps\map1\map.txt" />
+    <Text Include="files\Maps\map2\items.txt" />
+    <Text Include="files\Maps\map2\map.txt" />
+    <Text Include="files\Maps\map3\items.txt" />
+    <Text Include="files\Maps\map3\map.txt" />
+    <Text Include="files\Maps\map4\items.txt" />
+    <Text Include="files\Maps\map4\map.txt" />
+    <Text Include="files\Maps\map5\items.txt" />
+    <Text Include="files\Maps\map5\map.txt" />
+    <Text Include="files\Maps\map6\items.txt" />
+    <Text Include="files\Maps\map6\map.txt" />
+    <Text Include="files\Maps\map7\items.txt" />
+    <Text Include="files\Maps\map7\map.txt" />
+    <Text Include="files\Maps\map8\items.txt" />
+    <Text Include="files\Maps\map8\map.txt" />
+    <Text Include="files\Maps\map9\items.txt" />
+    <Text Include="files\Maps\map9\map.txt" />
+    <Text Include="files\Maps\map10\items.txt" />
+    <Text Include="files\Maps\map10\map.txt" />
+    <Text Include="files\Maps\paths.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="files\Shader\DeferredLighting.frag" />
+    <None Include="files\Shader\DeferredLighting.vert" />
+    <None Include="files\Shader\Geometry.frag" />
+    <None Include="files\Shader\NormalDisplayer.frag" />
+    <None Include="files\Shader\NormalDisplayer.geom" />
+    <None Include="files\Shader\NormalDisplayer.vert" />
+    <None Include="files\Shader\Polygon.frag" />
+    <None Include="files\Shader\Polygon.vert" />
+    <None Include="files\Shader\Texture.frag" />
+    <None Include="files\Shader\Texture.vert" />
+    <None Include="files\Shader\Light.frag" />
+    <None Include="files\Shader\MergeLight.frag" />
   </ItemGroup>
 </Project>

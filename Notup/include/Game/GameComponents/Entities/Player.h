@@ -13,6 +13,10 @@ public:
 
 	//virtual void draw();
 private:
+	glm::vec2 getMovement();
+	void flashLight();
+
 	std::shared_ptr<Input> m_input;
 	glm::vec2 m_windowSize;
+	float m_energy;
 };

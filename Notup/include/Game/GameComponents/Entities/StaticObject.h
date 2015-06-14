@@ -7,7 +7,7 @@
 class StaticObject : public Entity
 {
 public:
-	StaticObject(World &world, float radius, glm::vec2 position, glm::vec2 size, std::shared_ptr<Texture> texture);
+	StaticObject(World &world, float radius, glm::vec2 position, glm::vec2 size, std::shared_ptr<Texture> texture, float m_depth = 0.5f);
 
 	virtual void update(const GameTime& gameTime);
 

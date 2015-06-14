@@ -256,6 +256,11 @@ MatrixHandler &ShaderProgram::getMatrixHandler()
 	return*m_matrixHandler;
 }
 
+std::shared_ptr<MatrixHandler> ShaderProgram::getMatrixHandlerPtr()
+{
+	return m_matrixHandler;
+}
+
 const MatrixHandler &ShaderProgram::getMatrixHandler() const
 {
 	return*m_matrixHandler;

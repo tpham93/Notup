@@ -105,7 +105,19 @@ public:
 	* 	\brief				get the rotation
 	* 	\return rotation	the rotation
 	*/
-	float Sprite::getRotation() const;
+	float getRotation() const;
+
+	/*!
+	* 	\brief			set the rotation
+	* 	\param rotation	the rotation
+	*/
+	void setDepth(float depth, bool updateMatrices = true);
+
+	/*!
+	* 	\brief	get the depth
+	* 	\return	the depth
+	*/
+	float getDepth() const;
 
 	/*!
 	* 	\brief initializing the buffers
@@ -142,4 +154,6 @@ private:
 	glm::mat4 m_modelMatrix;
 
 	glm::vec2 m_origin;
+
+	float m_depth;
 };

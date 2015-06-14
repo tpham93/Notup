@@ -36,3 +36,22 @@ void Entity::setPosition(glm::vec2 pos)
 {
 	m_pos = pos;
 }
+
+void Entity::setIndex(unsigned int index)
+{
+	m_index = index;
+}
+
+unsigned int Entity::getIndex()
+{
+	return m_index;
+}
+
+void Entity::collision(std::shared_ptr<Entity> e)
+{
+
+}
+glm::vec2 Entity::getSize()
+{
+	return m_size;
+}

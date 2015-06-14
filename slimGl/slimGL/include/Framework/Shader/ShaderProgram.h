@@ -227,6 +227,11 @@ public:
 	*/
 	MatrixHandler &getMatrixHandler();
 
+	/*!
+	* 	\brief		get the currently used matrix handler
+	* 	\return		the used matrix handler
+	*/
+	std::shared_ptr<MatrixHandler> getMatrixHandlerPtr();
 
 	/*!
 	* 	\brief		get the currently used matrix handler

@@ -26,7 +26,7 @@ bool CustomGame::initialize()
 
 	glutSetWindowTitle("");
 
-	
+	glClearColor(0.0f, 0.0f, 0.0f, 0.0f);
 
 	//buttonRemote = std::make_shared<vrpn_Button_Remote>("openvibe-vrpn@localhost");
 	//analogRemote = std::make_shared<vrpn_Analog_Remote>("openvibe-vrpn@localhost");
@@ -74,9 +74,6 @@ void CustomGame::update()
 		glutLeaveMainLoop();
 	}
 
-	
-
-
 	GamestateType nextGamestateType(m_currentGamestate->update());
 	if (nextGamestateType != GamestateType::NONE)
 	{
@@ -108,7 +105,7 @@ void CustomGame::switchGamestate(GamestateType nextGamestateType)
 #include <Framework/Helper/Helper.h>
 void CustomGame::draw()
 {
-	glClear(GL_COLOR_BUFFER_BIT);
+	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
 	m_currentGamestate->draw();
 	 
